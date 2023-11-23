@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $conn->close();
             
                     // Redirect to the welcome page if all conditions have been satisfied
-                    header("Location: adminView.php");
+                    header("Location:admin/adminView.php");
                     exit;
                 } else {
                     $error .= 'The password is not valid.';
