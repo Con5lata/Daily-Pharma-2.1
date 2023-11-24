@@ -97,7 +97,7 @@ else{
         ?>
         <form method ="post">
             <input type="hidden" name="SSN" value="<?php echo $id; ?>">
-            <?php echo $id; ?>
+       
             <div class="row mb-3">
                 <label class="col-sm-3 col-form label">Name</label>
                 <div class="col-sm-6">

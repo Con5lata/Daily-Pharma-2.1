@@ -99,6 +99,8 @@
 
         <div class="container my-5" id="about">
             <h2>List of Doctors</h2>
+            <br> <a class='btn btn-danger btn-sm' href='adddoctors.php'>Add New Doctor</a></br>
+            <br>
             <br>
             <table class="table">
                 <thead>
@@ -167,6 +169,8 @@
         <div class="item"></div>
         <div class="container my-5" id="about">
             <h2>List of Pharmacies</h2>
+            <br>
+            <br> <a class='btn btn-danger btn-sm' href='addpharmacy.php'>Add New Pharmacy</a></br>
             <br>
             <table class="table">
                 <thead>
@@ -237,6 +241,8 @@
         
         <div class="container my-5" id="about">
             <h2>List of Companies</h2>
+            <br>
+            <br> <a class='btn btn-danger btn-sm' href='addcompanies.php'>Add New Company</a></br>
             <br>
             <table class="table">
                 <thead>
