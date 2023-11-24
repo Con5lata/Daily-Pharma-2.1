@@ -15,7 +15,6 @@ if (!isset($_SESSION["userid"]) || !isset($_SESSION["user"])) {
 $ID = $_SESSION["userid"];
 $user = $_SESSION["user"];
 $username = $_SESSION["user"]["Company_Name"];
-
 ?>
 
 <!DOCTYPE html>
@@ -42,10 +41,7 @@ $username = $_SESSION["user"]["Company_Name"];
                 <a href="../index.html">Home</a>
                 <a href="#about">Features</a>
                 <a href="#footer">Contact Us</a>
-                <a href="../logout.php" class="btn-login-popup" >Logout</a>                
-                </nav>
-                </nav>
-    
+                <a href="../logout.php" class="btn-login-popup" >Logout</a>                  
             </nav>
     
             <?php
