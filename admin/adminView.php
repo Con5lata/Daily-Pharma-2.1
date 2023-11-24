@@ -26,6 +26,7 @@
 
         <div class="container my-5" id="about">
             <h2>List of Patients</h2>
+            <br> <a class='btn btn-danger btn-sm' href='addpatients.php'>Add New Patient</a></br>
             <br>
             <table class="table">
                 <thead>
@@ -75,6 +76,7 @@
                             <td>
                                 <a class='btn btn-danger btn-sm' href='patientedit.php?SSN=" . $row["Patient_SSN"] ."'>Edit</a>
                             </td>
+                            
                         </tr>";
                     }
                     ?>

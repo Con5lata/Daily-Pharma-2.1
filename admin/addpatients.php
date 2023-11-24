@@ -17,45 +17,52 @@ $ID = $_SESSION["userid"];
 $user = $_SESSION["user"];
 $username = $_SESSION["user"];
 
-$drug_name  = "";
-$drug_company = "";
-$drug_desc  = "";
-$drug_quantity = "";
-$drug_expiry  = "";
-$drug_manuf  = "";
+$SSN = "";
+$Name = "";
+$Email = "";
+$Phone = "";
+$Address = "";
+$DOB = "";
+$Gender = "";
+$Status = "";
 
 $errorMessage = "";
 $successMessage = "";
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $drug_name = $_POST["Drug_Name"];
-    $drug_company = $_POST["Drug_Company"];
-    $drug_desc = $_POST["Drug_Description"];
-    $drug_quantity = $_POST["Drug_Quantity"];
-    $drug_expiry = $_POST["Drug_Expiration_Date"];
-    $drug_manuf = $_POST["Drug_Manufacturing_Date"];
+    $SSN = $_POST["SSN"];
+    $Name = $_POST["Patient_Name"];
+    $Email = $_POST["Patient_Email"];
+    $Phone = $_POST["Patient_Phone"];
+    $Address = $_POST["Patient_Address"];
+    $DOB = $_POST["Patient_DOB"];
+    $Gender = $_POST["Patient_Gender"];
+    $Status =$_POST["Patient_Status"];
 
 
     do {
         $sql = "
-        INSERT INTO `drugs`(`Drug_Name`, `Drug_Description`, `Drug_Quantity`, `Drug_Expiration_Date`, `Drug_Manufacturing_Date`, `Drug_Company`)
-         VALUES('$drug_name', '$drug_desc', '$drug_quantity', '$drug_expiry',  '$drug_manuf', '$drug_company')";
+        INSERT INTO `patients`(`Patient_SSN`, `Patient_Name`,`Patient_Email`, `Patient_Phone`, `Patient_Address`, `Patient_DOB`, `Patient_Gender`, `Status`)
+         VALUES('$SSN', '$Name', '$Email', '$Phone',  '$Address', '$DOB', '$Gender', '$Status')";
         $result = $conn->query($sql);
 
         if (!$result) {
             $errorMessage = "Invalid Query: " . $conn->error;
             break;
         }
+        
+        $SSN = "";
+        $Name = "";
+        $Email = "";
+        $Phone = "";
+        $Address = "";
+        $DOB = "";
+        $Gender = "";
+        $Status = "";
 
-        $drug_name  = "";
-        $drug_company = "";
-        $drug_desc  = "";
-        $drug_quantity = "";
-        $drug_expiry  = "";
-        $drug_manuf  = "";
-
-        $successMessage = "Drug added successfully";
-        header("Location: companyView.php");
+        $successMessage = "Pateint added successfully";
+        header("Location: adminView.php");
         exit;
     } while (false);
 }
@@ -67,14 +74,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-COMPLATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial scale=1.0">
-    <title>Company View - Add New Drug</title>
+    <title>ADMIN --Add New Patient </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container my-5">
-        <h2>New Drug</h2>
+        <h2>New Patient</h2>
 
         <?php
         if (!empty($errorMessage)) {
@@ -88,38 +95,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ?>
         <form method="post">
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Drug Name</label>
+                <label class="col-sm-3 col-form-label">SSN</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="Drug_Name" value="<?php echo $drug_name; ?>">
+                    <input type="text" class="form-control" name="SSN" value="<?php echo $SSN; ?>">
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Drug Description</label>
+                <label class="col-sm-3 col-form-label">Patient Name</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="Drug_Description" value="<?php echo $drug_name; ?>">
+                    <input type="text" class="form-control" name="Patient_Name" value="<?php echo $Name; ?>">
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Drug Quantity</label>
+                <label class="col-sm-3 col-form-label">Patient Address</label>
                 <div class="col-sm-6">
-                    <input type="number" class="form-control" name="Drug_Quantity" value="<?php echo $drug_company; ?>">
+                    <input type="text" class="form-control" name="Patient_Address" value="<?php echo $Address; ?>">
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Drug Expiration Date</label>
+                <label class="col-sm-3 col-form-label">Patient Email</label>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" name="Drug_Expiration_Date" value="<?php echo $drug_formula; ?>">
+                    <input type="text" class="form-control" name="Patient_Email" value="<?php echo $Email; ?>">
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Drug Manufacturing Date</label>
+                <label class="col-sm-3 col-form-label">Patient Phone</label>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" name="Drug_Manufacturing_Date" value="<?php echo $drug_price; ?>">
+                    <input type="number" class="form-control" name="Patient_Phone" value="<?php echo $Phone; ?>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Patient Gender</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="Patient_Gender" value="<?php echo $Gender; ?>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Patient DOB</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" name="Patient_DOB" value="<?php echo $DOB; ?>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Patient_Status</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="Patient_Status" value="<?php echo $Status; ?>">
                 </div>
             </div>
 
-            <input type="hidden" name="Drug_Company" value="<?php echo $ID ;?>">
 
+
+            
             <?php
             if (!empty($successMessage)) {
                 echo "
