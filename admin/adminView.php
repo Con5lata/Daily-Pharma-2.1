@@ -302,9 +302,7 @@
                 </ul>
             </nav>
         </div>
-
-
-
+        
 
     <!--Footer-->
     <section id="footer">
