@@ -1,0 +1,84 @@
+###
+//Testing patient routes
+GET http://localhost:3000/patients
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/patients/email/michaeldavis@gmail.com
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/patients/gender/Female
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/patients/drug/3
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/patients/drug/Acetaminophen
+Authorization: Bearer 
+
+
+###
+//Tesing Doctor routes
+GET http://localhost:3000/doctors
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/doctors/ssn/1
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/doctors/speciality/Cardiology
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/doctors/experience/1
+Authorization: Bearer 
+
+
+###
+//Tesing Pharmacy routes
+GET http://localhost:3000/pharmacy
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/pharmacy/id/1
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/pharmacy/email/abcpharmacy@gmail.com
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/pharmacy/address/Manhattan
+Authorization: Bearer 
+
+//Testing Routes for the company
+###
+GET http://localhost:3000/company
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/company/id/1
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/company/email/pqrpharma@gmail.com
+Authorization: Bearer 
+
+###
+GET http://localhost:3000/company/drugs-produced/0
+Authorization: Bearer 
+
+
+###
+//Test Routes for drugs
+GET http://localhost:3000/drugs
+
+###
+GET http://localhost:3000/drugs/id/35
+
+###
+GET http://localhost:3000/drugs/category/Antibiotic

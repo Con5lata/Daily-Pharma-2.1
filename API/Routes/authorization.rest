@@ -1,0 +1,34 @@
+###
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDExODE3NTEsImV4cCI6MTcwMTE4MTc3MX0.c_Gv49WFBwXrG65sUzxGviJfLf11emF4_7YBJSilIJE
+
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "SSN" : 100,
+    "userType" : "admin",
+    "password": "admin"
+}
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "SSN" : 100,
+    "userType" : "admin",
+    "password": "admin"
+}
+
+###
+GET http://localhost:3000/tokens
+
+###
+POST http://localhost:3000/refresh
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiJ9.MTAw.Vlp-9MwIr8fylhV9C46cGXz4HZ4f7rhzkOeLimSKRTg"
+}

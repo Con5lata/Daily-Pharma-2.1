@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/updateUser" method="post">
+        <label for="id_ssn"> ID/SSN</label>
+        <input type="text" name="id_ssn" id="id_ssn" readonly>
+        <label for="User_type">User_type </label>
+        <input type="text" name="User_type" id="User_type" readonly>
+        <label for="resource_requested">resource_requested </label>
+        <input type="text" name="resource_requested" id="resource_requested">
+        <button type="submit">Update</button>
+
+    </form>
+    <script>
+        // Extract query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        const userType = urlParams.get('userType');
+        const resourceRequested = urlParams.get('resourceRequested');
+
+        // Fill in form fields
+        document.getElementById('id_ssn').value = id;
+        document.getElementById('User_type').value = userType;
+        document.getElementById('resource_requested').value = resourceRequested;
+
+        function updateUser() {
+            const id_ssn = document.getElementById('id_ssn').value;
+            const User_type = document.getElementById('User_type').value;
+            const resource_requested = document.getElementById('resource_requested').value;
+
+            fetch('/updateUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id_ssn, User_type, resource_requested }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Update response:', data);
+                    alert('User details updated successfully');
+                })
+                .catch((error) => {
+                    console.error('Error updating user details:', error);
+                    alert('Error updating user details');
+                });
+        }
+    </script>
+</body>
+
+</html>

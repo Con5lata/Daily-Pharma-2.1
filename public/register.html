@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>API ACCESS</title>
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <div class="logo">
+            <a href="index.html">DailyPharma API</a>
+            <hr>
+        </div>
+    </header>
+
+    <div>
+
+        <form method="post">
+            <legend>
+                <label for="id_ssn">ID/SSN</label>
+                <input type="text" name="id_ssn" id="id_ssn">
+
+                <label for="user_type">User Type:</label>
+                <select id="user_type" name="user_type" required>
+                    <option value="">Select User Type</option>
+                    <option value="patient">Patient</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="pharmacy">Pharmacy</option>
+                    <option value="company">Pharmaceutical Company</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+
+                <!-- Create js logic to pick form data for this form -->
+                <p>Already have an account? <a href="index.html">Login here</a></p>
+                <button id="login" onclick="registerUser()" type="submit">Register</button>
+            </legend>
+
+        </form>
+        <script>
+            function registerUser() {
+                const id_ssn = document.getElementById('id_ssn').value;
+                const User_type = document.getElementById('user_type').value;
+                const Password = document.getElementById('password').value;
+                console.log('Sending registration request:', { id_ssn, User_type, Password });
+                fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+
+                    },
+                    body: JSON.stringify({ id_ssn, User_type, Password }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        window.location.href = "index.html";
+                    }).catch(error => {
+                        console.error('Error:', error);
+
+                    })
+            }
+        </script>
+
+    </div>
+
+
+</body>
+
+</html>

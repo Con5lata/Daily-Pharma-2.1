@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/updateUser" method="post">
+        <label for="id_ssn"> ID/SSN</label>
+        <input type="text" name="id_ssn" id="id_ssn" readonly>
+        <label for="User_type"> User_type</label>
+        <input type="text" name="User_type" id="User_type" readonly>
+        <label for="drugs">drugs </label>
+        <input type="text" name="drugs" id="drugs">
+        <label for="doctors"> doctors</label>
+        <input type="text" name="doctors" id="doctors">
+        <label for="patients"> patients</label>
+        <input type="text" name="patients" id="patients">
+        <label for="pharmacies">pharmacies</label>
+        <input type="text" name="pharmacies" id="pharmacies">
+        <label for="company">company</label>
+        <input type="text" name="company" id="company">
+        <button type="submit">Update</button>
+
+    </form>
+    <script>
+        // Extract query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const id_ssn = urlParams.get('id');
+        const userType = urlParams.get('userType');
+        const drugs = urlParams.get('drugs');
+        const doctors = urlParams.get('doctors');
+        const patients = urlParams.get('patients');
+        const pharmacies = urlParams.get('pharmacies');
+        const company = urlParams.get('company');
+
+
+        // Fill in form fields
+        document.getElementById('id_ssn').value = id_ssn;
+        document.getElementById('User_type').value = userType;
+        document.getElementById('drugs').value = drugs;
+        document.getElementById('doctors').value = doctors;
+        document.getElementById('pharmacies').value = pharmacies;
+        document.getElementById('patients').value = patients;
+        document.getElementById('company').value = company;
+
+        function editUser() {
+            const id_ssn = document.getElementById('id_ssn').value;
+            const User_type = document.getElementById('User_type').value;
+            const drugs = document.getElementById('drugs').value;
+            const doctors = document.getElementById('doctors').value;
+            const patients = document.getElementById('patients').value;
+            const pharmacies = document.getElementById('pharmacies').value;
+            const company = document.getAnimations('company').value;
+
+            fetch('/editUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id_ssn, User_type, drugs, doctors, patients, pharmacies, company }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Update response:', data);
+                    alert('User details updated successfully');
+                })
+                .catch((error) => {
+                    console.error('Error updating user details:', error);
+                    alert('Error updating user details');
+                });
+        }
+    </script>
+</body>
+
+</html>
