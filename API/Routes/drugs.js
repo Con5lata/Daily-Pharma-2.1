@@ -7,7 +7,7 @@ const connection = mysql2.createConnection({
     host: "localhost",
     user : "root",
     password: "",
-    database: "dailypharma2" 
+    database: "dailypharma " 
 })
 
 try {

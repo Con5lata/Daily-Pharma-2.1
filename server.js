@@ -8,11 +8,11 @@ const session = require('express-session');
 const { access } = require('fs');
 const app = express()
 
-const patientRoute = require('./API/Routes/patients')
-const doctorRoute = require('./API/Routes/doctors')
-const pharmacyRoute = require('./pharmacy')
-const companyRoute = require('./company')
-const drugRoute = require('./drugs')
+const patientRoute = require('./API/routes/patients')
+const doctorRoute = require('./API/routes/doctors')
+const pharmacyRoute = require('./API/routes/pharmacy')
+const companyRoute = require('./API/routes/company')
+const drugRoute = require('./API/routes/drugs')
 app.use('/patients', patientRoute)
 app.use('/doctors', doctorRoute)
 app.use('/pharmacy', pharmacyRoute)
